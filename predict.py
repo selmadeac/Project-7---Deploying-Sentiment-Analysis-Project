@@ -13,7 +13,7 @@ import torch.utils.data
 
 from model import LSTMClassifier
 
-from utils import review_to_words,  python
+from utils import review_to_words,  convert_and_pad
 
 
 def model_fn(model_dir):
@@ -85,11 +85,9 @@ def predict_fn(input_data, model):
     # Make sure to put the model into evaluation mode
     model.eval()
 
-    with torch.no_grad():
-        output = model.forward(data)
+    output = model.forward(data)
     # TODO: Compute the result of applying the model to the input data. The variable `result` should
     #       be a numpy array which contains a single integer which is either 1 or 0
-    torch.autograd()
     
     result = np.around(output.numpy()).astype(int)
 
